@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- modal class -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+.ui-chatbox {
+    background-color: #ffffff;
+    border: 0px solid #b0b0b0;
+    bottom: 0px;
+    display: none;
+    height: 615px;
+    position: fixed;
+    right: 20px;
+    width: 409px;
+    font-family: 'Arial Unicode MS', sans-serif;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-color: rgb(41, 86, 164);
+    box-shadow: -4px 7px 20px -8px;
+}
+.ui-chatbox-on {
+    display: block !important;
+}
+.msg-header {
+    border: 0px solid #ccc;
+    width: 100%;
+    height: 9%;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    display: inline-block;
+    background-color: rgb(33, 150, 243);
+}
+.header-icons {
+    width: 120px;
+    float: right;
+    margin-top: 12px;
+    margin-right: 10px;
+}
+.header-icons .fa {
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+}
+.chatmsg {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 504px;
+    border: 0px solid rgba(0, 0, 0, 0.15);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    background-image: url('/static/images/img/bg_texture.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.chatmsg::-webkit-scrollbar {
+    width: 3px;
+    z-index: 99;
+}
+
+.chatmsg::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .1);
+}
+
+.chatinput {
+    border: 1px solid #dedbdb;
+    width: 360px;
+    height: 56px;
+    border-bottom-left-radius: 5px;
+
+    display: inline-block;
+    background-color: transparent;
+    position: fixed;
+    right: 71px;
+    bottom: 0px;
+
+}
+}
+
+.chatinput::selection {
+    border: 1px solid #fff;
+}
+
+input[type=text2] {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    left: 0px;
+    padding-left: 51px;
+    font-size: 15px;
+    border-width: 0px;
+    border-style: inset;
+    border-image: initial;
+    columns:"10";
+
+    outline: none;
+}
+
+#ui-menu-on {
+    display: block !important;
+}
+
+#menu_img {
+    cursor: pointer;
+    position: absolute;
+    right: 327px;
+    bottom: 16px;
+    width: 20px;
+}
+#min {
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    color: white;
+    top: 17px;
+    right: 43px;
+    border: 1px solid #eee;
+    border-color: rgba(51, 74, 123, 0);
+    background-color: rgba(51, 74, 123, 0);
+    -webkit-transition: 1s;
+    border-radius: 10px;
+}
+
+#min:hover {
+    background-color: rgba(51, 74, 123, 0.23)
+}
+
+#close {
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    color: white;
+    top: 13px;
+    right: 9px;
+    border: 1px solid #eee;
+    border-color: rgba(51, 74, 123, 0);
+    background-color: rgba(51, 74, 123, 0);
+    border-radius: 10px
+}
+
+#close:hover {
+    background-color: rgba(51, 74, 123, 0.23)
+}
+
+#ask {
+    font-size: 17px;
+    font-family: "Arial Unicode MS";
+    color: #ffffff;
+    position: absolute;
+    top: 9px;
+    right: 306px;
+}
+.opnchatbtn {
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+#FinImg {
+    border-radius: 40%;
+}
+.chat {
+    display: flex;
+}
+.chat .chat-message {
+    display: inline-block;
+    margin-right: 50px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border-radius: 22px 15px 0px 15px;
+    background-color: #eae8e8;
+    padding: 8px;
+    position: relative;
+    overflow-wrap: break-word;
+    font-family: "Arial Unicode MS";
+    font-size: 13px;
+    background: #bdccd4;
+    order: -1;
+    color: #4d4d4d;
+    box-shadow: 3px 9px 4px -9px;
+}
+.self .chat-message
+{
+    display: inline-block;
+    margin-right: 50px;
+    margin-right: 10px;
+    margin-top: 13px;
+    border-radius: 15px 15px 15px 0px;
+    padding: 8px;
+    position: relative;
+    overflow-wrap: break-word;
+    font-family: "Arial Unicode MS";
+    font-size: 13px;
+    order: -1;
+    color: #ffffff;
+    box-shadow: -9px 6px 14px -9px #000;
+    background-color: #57a6ff;
+}
+.friend {
+    flex-direction: row-reverse;
+    margin-right: -10px;
+}
+    </style>
+</head>
+
+<body>
+    <img id="FinImg" src="/static/images/click.png" class="opnchatbtn" height="145" width="145" alt="smile">
+    <div class="ui-chatbox" id="qnimate" outline="0">
+        <div class="msg-header">
+            <img id="header_img"  style="
+            height: 58px;
+        "alt="">
+
+            <div class="header-icons">
+                <img id="min" src="/static/images/Minim.png" height="25" width="38" alt="">
+                <img id="close" src="/static/images/Close.png" height="30" width="30"alt="" data-toggle="modal" data-target="#myModal"><!--onclick="closee();" -->
+
+            </div>
+        </div>
+        <div class="chatmsg" id="chatwin"></div>
+
+
+        <div class="chatinput" id="chatinput">
+            <div id="menu">
+            </div>
+            <img id="menu_img" src="https://img.icons8.com/android/50/000000/menu.png">
+            <input id="txt" type="text2" name="msg" placeholder="Type your message here..." autocomplete="off" maxlength="255" required>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title"style="padding-left:171px;padding-top: 5px;">Confirm Exit?</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body" style="padding-left: 95px; font-size: 16px">
+            On exiting, all chat history will be cleared.
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" style="background-color:rgb(33, 150, 243);border-color:rgb(33, 150, 243);" id="close2" data-dismiss="modal">Confirm</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- modal session 1-->
+
+    <div class="modal fade" id="myModal_session_small" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>This is a small modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <!------modal session 2---->
+        <div class="modal" id="myModal_session">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title"style="padding-left:171px;padding-top: 5px;">Session Expired</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body" style="padding-left: 95px; font-size: 16px">
+               Session Timeout
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="background-color:rgb(33, 150, 243);border-color:rgb(33, 150, 243);" id="close2" data-dismiss="modal">Confirm</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <!------modal session 3---->
+        <div class="modal fade" id="session-expired-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+          <div class="modal-dialog" role="document">
+
+              <div class="modal-content">
+
+                  <div class="modal-header">
+
+                      <h4 class="modal-title">Session Expired</h4>
+
+                  </div>
+
+                  <div class="modal-body">
+
+                      Your session is expired.
+
+                  </div>
+
+                  <div class="modal-footer">
+
+                      <button id="btnExpiredOk" type="button" class="btn btn-primary" data-dismiss="modal" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;">Ok</button>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
+</div>
+</body>
+<script>
+
+    jQuery(function ($) {
+        // Get a reference to the container.
+        var container = $(".ui-chatbox");
+        // Bind the link to toggle the slide.
+        $("#FinImg").click(
+            function (event) {
+
+
+           var msg = '<div class="chat self"><span class="chat-message">' +'Hello ' + '</span></div>';
+            $("#chatwin").html(msg);
+
+            event.preventDefault();
+            if (container.is(":visible")) {
+                // Hide - slide up
+                container.slideUp(500);
+            } else {
+                container.slideDown(500);
+            }
+        }
+    );
+});
+
+jQuery(function( $ ){
+    // Get a reference to the container.
+    var container = $( ".ui-chatbox" );
+    // Bind the link to toggle the slide.
+    $( "#close2" ).click(
+
+      function( event ){
+
+        event.preventDefault();
+
+
+        if (container.is( ":visible" )){
+
+          container.slideUp( 500 );
+
+        } else {
+
+          container.slideDown( 500 );
+        }
+      }
+    );
+  });
+
+    var j = 1;
+    var rawText = null;
+    var i;
+    i = 1;
+    $("#txt").keypress(function (e)
+    {
+        if (i == 1) {
+            if (e.which == 13 && document.getElementById("txt").value != '' ) {
+                getBotResponse();
+            }
+        }
+        else {
+            if (e.which == 13 && document.getElementById("txt").value != '' ) {
+                StopTimer();
+                getBotResponse();
+            }
+        }
+    });
+
+
+  function getBotResponse()
+    {
+        if (document.getElementById("txt").value != '')
+        {
+            while (j < 2)
+            {
+                j++;
+            }
+            var rawText;
+            rawText = $("#txt").val();
+            console.log("rawtext",rawText);
+                var userHtml = '<div class="chat friend"><div class="chat-message"><span>' +
+                                    rawText
+                                + '</span></div></div>';
+
+            $("#txt").val("");
+            $("#chatwin").append(userHtml);
+            StartTimer();
+            test();
+            $.get("/get", { msg: rawText}).done(function (data)
+            {
+                // console.log("data",data);
+                var botHtml = '<div class="chat self"><span class="chat-message">' + data + '</span></div>';
+
+       $("#chatwin").append(botHtml);
+       i++;
+       test();
+            });
+            }
+            }
+
+    function uuidv4()
+    {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c)
+        {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+    function StartTimer()
+    {
+        t = setTimeout(alertFunc, 600000);
+    }
+    function StopTimer()
+    {
+        clearTimeout(t);
+    }
+    function test()
+     {
+        var elem = document.getElementById('chatwin');
+        elem.scrollTop = elem.scrollHeight;
+    }
+    function alertFunc()
+    {
+
+  $("#session-expired-modal").modal('show');
+}
+
+</script>
+
+</html>
